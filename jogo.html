@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Joguinho 🤪</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; padding: 50px;">
+  <h1 id="boasVindas"></h1>
+  <p>Clique no botão abaixo e tente adivinhar o número secreto entre 1 e 10!</p>
+  <input type="number" id="palpite" min="1" max="10">
+  <button onclick="jogar()">Chutar</button>
+  <p id="resultado"></p>
+
+  <script>
+    const nome = localStorage.getItem('nome');
+    const idade = localStorage.getItem('idade');
+    document.getElementById("boasVindas").innerText = `Olá ${nome} (${idade} anos)!`;
+
+    const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+
+    function jogar() {
+      const palpite = parseInt(document.getElementById("palpite").value);
+      const resultado = document.getElementById("resultado");
+
+      if (palpite === numeroSecreto) {
+        resultado.innerText = "🎉 Acertou! Você é brabo(a)!";
+      } else {
+        resultado.innerText = "❌ Errou! Tente de novo!";
+      }
+    }
+  </script>
+</body>
+</html>
